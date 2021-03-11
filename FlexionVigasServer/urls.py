@@ -22,25 +22,15 @@ from rest_framework.routers import DefaultRouter
 from flexionVigas_api.views import VigaView
 from flexionVigas_api.cortanteVigasModule.cortanteVigaView import cortanteVigaView
 
-# viga_detail=VigaView.as_view({
-#     'get': 'retrieve',
-#     'put': 'update',
-#     'patch': 'partial_update',
-#     'delete': 'destroy'
-# })
-
-# viga_myGet=VigaView.as_view({
-#     'get':'myGet'
-# },renderer_classes=[renderers.StaticHTMLRenderer])
-
-# cortante_calc=cortanteVigaView.as_view({
-
-# })
-
 router = DefaultRouter()
-router.register(r'vigas',VigaView)
-urlpatterns=router.urls
+router.register(r'vigas', VigaView)
+urlpatterns = router.urls
+
+cortante_disenio = cortanteVigaView.as_view({'post': 'post'})
+cortante_chequeo = cortanteVigaView.as_view({'post': 'chequeoSeccion'})
 
 urlpatterns += [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('cortante/disenio/', cortante_disenio, name='cortante_disenio'),
+    path('cortante/chequeo/', cortante_chequeo, name='cortante_chequeo')
 ]
