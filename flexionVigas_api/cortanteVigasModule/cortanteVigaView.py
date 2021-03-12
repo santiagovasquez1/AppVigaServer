@@ -14,7 +14,8 @@ class cortanteVigaView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
             data["fc"]), float(data["fy"]), float(data["phiCortante"]), float(data["vu"]), float(data["asCortante"]), float(data["separacionAs"]))
         return cortante
 
-    def post(self, request):
+    @action(detail=True, methods=['post'])
+    def disenioSeccion(self, request):
         data = request.data
         cortante = self.createModel(data)
 

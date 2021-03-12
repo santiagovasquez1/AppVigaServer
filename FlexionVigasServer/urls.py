@@ -26,7 +26,7 @@ router = DefaultRouter()
 router.register(r'vigas', VigaView)
 urlpatterns = router.urls
 
-cortante_disenio = cortanteVigaView.as_view({'post': 'post'})
+cortante_disenio = cortanteVigaView.as_view({'post': 'disenioSeccion'})
 cortante_chequeo = cortanteVigaView.as_view({'post': 'chequeoSeccion'})
 
 urlpatterns += [
